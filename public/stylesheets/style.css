@@ -1,0 +1,253 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{background-color:#000000; height:100%; }
+.nav_bg{
+	position:absolute;
+	z-index:999;
+	background-image: url(../images/nav_bg.png);
+	background-repeat: repeat-x;
+	width:100%; height:111px; 
+}
+#mainbox{overflow:hidden; position:relative;}
+#main_nav{display:block; width:990px; height:111px; margin:0 auto;}
+#main_nav li{width:130px; text-align:center; height:111px; float:left; line-height:111px;}
+#main_nav li.current{background:url(../images/nav_tag.png) center bottom no-repeat;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="../images/nav_tag.png"); }
+#main_nav li.logo{background:url(../images/logo.jpg) no-repeat; width:170px; height:111px; margin:0 20px;}
+#main_nav li a{font-size:16px; color:#EFEFEF; text-decoration:none;}
+
+#clear_submenu{display:block; width:100%; height:10px; position:absolute; z-index:9999; top:0px;}
+#topLink{width:250px; height:15px;  font-size:12px; position:absolute; z-index:1000; top:10px; right:40px; line-height:15px;}
+#topLink div{float:left;}
+#topLink .share{margin-left:20px; width:92px;}
+#topLink a{font-size:12px;color:#999;}
+#topLink a:hover{font-size:12px;color:#fff;}
+
+#copyright{position:absolute; right:20px; bottom:10px; z-index:888; width:266px; height:19px;}
+#footerbg{position:absolute; left:0px; bottom:0px; z-index:777; background:url(../images/footer.jpg); height:39px;}
+
+#sub_nav{height:339px; width:100%;background:url(../images/sub_menu_bg.png) repeat-x; display:none; margin-top:-1px; position:relative;}
+#sub_nav .sub_menu{display:none;width:940px; margin:0 auto;}
+#sub_nav .sub_menu h2{ font-size:30px; padding-top:30px;}
+#sub_nav .sub_menu .sub_menu_content{ padding-top:0px;}
+#sub_nav .sub_menu .sub_menu_content .category{float:left; width:260px; margin-right:40px;}
+#sub_nav .sub_menu .sub_menu_content .category h3{font-size:14px; line-height:40px; border-bottom:1px #FFF solid; margin:20px 0;}
+#sub_nav .sub_menu .sub_menu_content .category li{width:130px; float:left; height:22px; line-height:22px;font-size:12px;}
+#sub_nav .sub_menu .sub_menu_content .category ul.sub2 li{float:none; width:220px; height:22px; line-height:22px;font-size:12px;}
+#sub_nav .sub_menu .sub_menu_content .category li a:hover{text-decoration:underline;}
+.reloadsource{display:none;}
+
+#open_btn{width:55px; height:47px; position:absolute; cursor:pointer; z-index:999}
+#open_btn.state_open{background:url(../images/up.jpg) no-repeat; }
+#open_btn.state_close{background:url(../images/down.jpg) no-repeat; }
+
+#indexNewsBox{width:990px; position:absolute; display:none; z-index:999}
+#indexNewsBox .newsBox{width:310px; height:100px; margin:10px;*margin:5px; background: url(../images/indexNewsBg.png); float:left; border:1px solid #000;}
+#indexNewsBox .newsBox.current{border:1px solid #999;}
+#indexNewsBox .newsBox .pic{ width:90px; height:90px;float:left; margin:5px;*margin:2px;}
+#indexNewsBox .newsBox .content{float:left; width:198px; margin:5px;}
+#indexNewsBox .newsBox h2{font-size:16px; line-height:30px; height:30px;}
+#indexNewsBox .newsBox ul li{line-height:18px;font-size:12px;}
+#indexNewsBox .newsBox ul li a{font-size:12px;}
+#indexNewsBox .newsBox ul li a:hover{text-decoration:underline;}
+
+/* home */
+#indexMc{  width:830px; height:550px;position:absolute;z-index:4;}
+#indexMc .item{ position:absolute; left:99999px;}
+#indexMc .imgList{position:relative;}
+#indexMc .imgList li{width:530px; height:400px;}
+#loading{font-size:14px; width:60px; height:60px; line-height:60px; position:absolute;}
+
+/* product details */
+#productList{height:87px; position:absolute; bottom:39px; left:0px; width:100%; z-index:100px; background-color:#000; }
+#productList .btn_prev{width:107px; height:87px;  background-color:#000; background:url(../images/products/prev.jpg) no-repeat right; float:left; cursor:pointer;}
+#productList .btn_next{width:97px; height:87px;  background-color:#000; background:url(../images/products/next.jpg) no-repeat left;float:left; cursor:pointer;}
+#productList .listBox{display:block; float:left;}
+#productList ul{float:left; margin:0; padding:0; display:block;}
+#productList ul li{float:left; margin-right:1px;}
+
+.proPicBox{width:470px;height:470px; float:left;}
+.proPicBox .bigPic{position:relative; height:340px; overflow:hidden;}
+.proPicBox .bigPic li{position:absolute; left:99999px;}
+
+.proPicBox .picAlbum{width:470px; height:56px; text-align:center;}
+.proPicBox .picAlbum li{float:left; height:50px; cursor:pointer; padding:3px;}
+
+
+
+.proTxtBox{width:520px; height:470px; overflow:hidden;}
+.proTxtBox .pro_name{font-size:20px; color:#000; height:50px; line-height:50px;}
+.proTxtBox .pro_info_tab{border-bottom:1px solid #000;}
+.proTxtBox .pro_info_tab ul{display:block;}
+.proTxtBox .pro_info_tab li{float:left; padding:5px 10px; margin-right:5px; text-align:center; color:#000; cursor:pointer;}
+.proTxtBox .pro_info_tab li.current{background-color:#000; color:#FFFFFF;}
+.proTxtBox .pro_info_content .itemBox{width:520px; height:258px; padding-top:10px; display:none; color:#000000;}
+.proTxtBox .pro_info_content .itemBox td,.proTxtBox .pro_info_content .itemBox p,.proTxtBox .pro_info_content .itemBox a,.proTxtBox .pro_info_content .itemBox span{color:#000000;}
+.proTxtBox .pro_info_content .itemBox td{border-bottom:1px solid #999; height:24px; line-height:24px;}
+
+/* about_index */
+.about_index ul li{padding:15px;float:left;}
+.page_content,page_content p,page_content a,page_content span{line-height:24px; font-size:14px;}
+.page_content h1{font-size:18px; margin-bottom:5px; text-decoration:underline;}
+/* page_articles */
+.page_title{margin-bottom:20px;}
+.page_articles{margin:20px 0;border-bottom:1px solid #333;}
+.page_articles th{border-bottom:1px solid #333;line-height:30px; height:30px;font-size:16px; color:#FFF; }
+.page_articles tr.current td{ background-color:#111;}
+.page_articles td{line-height:30px; height:30px; font-size:12px; color:#FFF;}
+.page_articles a:hover{color:#fff; text-decoration:underline;}
+.page_art_pager a{font-size:10px; color:#ccc; padding-right:10px;}
+.page_art_pager a.current,.page_art_pager a:hover{font-size:12px; color:#fff; text-decoration:underline;}
+
+/* app_categorys */
+.app_categorys li{height:22px; line-height:22px;}
+.app_categorys li a{font-size:14px; color:#ccc;}
+.app_categorys li a:hover,.app_categorys li.current a{ text-decoration:underline; color:#fff; font-weight:bold; text-decoration:underline;}
+.btn{cursor:pointer;}
+.app_articles li{height:22px; line-height:22px; padding-right:20px; float:left;}
+.app_articles li a{color:#CCCCCC; font-size:14px;}
+.app_articles li a:hover,.app_articles li.current a{color:#fff; text-decoration:underline;}
+.app_art_content{font-size:12px; color:#FFFFFF; line-height:22px;}
+
+/* news_index_box */
+.news_index_box .container{ padding:20px;}
+.news_index_box .container .news_list{padding:10px 0px; height:196px;}
+.news_index_box .container .news_list li{line-height:22px; height:22px;}
+.news_index_box .container .news_list li a{color:#ccc;}
+.news_index_box .container .news_list li a:hover{color:#FFF; text-decoration:underline;}
+
+
+/* history_list */
+.history_list{width:990px; line-height:47px; height:47px; background:url(../images/history_line.png) no-repeat center 23px;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="../images/history_line.png"); 
+      }
+.history_list ul{width:970px; margin:0 auto;}
+.history_list ul li{height:47px; width:47px; background:url(../images/history_tag.png) no-repeat ; line-height:47px; text-align:center; float:left; color:#000000; cursor:pointer;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="../images/history_tag.png"); 
+}
+.history_list ul li.current,.history_list ul li.selected{background:url(../images/history_tag_hover.png) no-repeat; color:#FFFFFF;}
+.history_content li{position:absolute; left:300px; bottom:9999px;}
+
+
+.btn_left a,.btn_right a,.btn_left,.btn_right{display:block; width:50px; height:130px;}
+
+
+.back_cate a{color:#999999;}
+.back_cate a:hover{color:#fff; text-decoration:underline;}
+
+/* jspContainer scroll bar css*/
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	margin-left:10px;
+	top: 0;
+	right: 0;
+	width: 6px;
+	height: 100%;
+	background:#F3F3F3;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0px;
+	background: #F3F3F3;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	background: #F3F3F3;
+	position: relative;
+}
+
+.jspDrag
+{
+	background: #333;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+}
