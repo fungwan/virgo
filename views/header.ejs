@@ -59,94 +59,17 @@
         <div id="sub_menu_1" class="sub_menu" style="height: 0px; display: none;">
             <h2>产品中心</h2>
             <div class="sub_menu_content">
+                <!-- init data here loop -->
+                <% for(var i=0; i<product.length; i++) {%>
                 <div class="category" >
-                    <h3><a href="http://loyallighting.com/#">节能灯系列</a></h3>
+                    <h3><a href="http://loyallighting.com/#"><%= product[i]['series'] %></a></h3>
                     <ul>
-
-                        <li><a href="/usharp">U型节能灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/luoxuanxingjienengdeng">螺旋形节能灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/lazhuxingjienengdeng">蜡烛型节能灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/huanxingjienengdeng">环形节能灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/xidingdeng">吸顶灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/t4t5dengguanzhijia">T4/T5灯管支架</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/fansheshijienengdeng">反射式节能灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/zhuxingjienengdeng">柱形节能灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/zhenliuqi">镇流器</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/huaxingjienengdeng">花形节能灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/qiuxingjienengdeng">球形节能灯</a></li>
-
+                        <% for(var m=0; m<product[i]['childArray'].length; m++) {%>
+                        <li><a href="/usharp"><%=product[i]['childArray'][m]['category'] %></a></li>
+                        <% } %>
                     </ul>
                 </div>
-                <div class="category" >
-                    <h3><a href="http://loyallighting.com/#">LED室内照明系列</a></h3>
-                    <ul>
-
-                        <li><a href="http://loyallighting.com/index.php/ledsanduanbianguangtongdeng">LED三段变光筒灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledtianhuadeng">LED天花灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledlazhudeng">LED蜡烛灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledtongdeng">LED筒灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/led-pardeng">LED PAR灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledguidaodeng">LED轨道灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/leddengguan">LED灯管</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledgeshandeng">LED格栅灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/leddengdai">LED灯带</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledqiupao">LED球泡</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledxidingdeng">LED吸顶灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledshedengguangyuan">LED射灯光源</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledmianbandeng">LED面板灯</a></li>
-
-
-
-                    </ul>
-                </div>
-                <div class="category">
-                    <h3><a href="http://loyallighting.com/#">LED户外照明系列</a></h3>
-                    <ul>
-
-                        <li><a href="http://loyallighting.com/index.php/ledshuidideng">LED水底灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledmaidideng">LED埋地灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledcaopingdeng">LED草坪灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledhulanguan">LED护栏管</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledbideng">LED壁灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledtouguangdeng">LED投光灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/leddengdai">LED灯带</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledxiqiangdeng">LED洗墙灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledsuidaodeng">LED隧道灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/ledludeng">LED路灯</a></li>
-
-                    </ul>
-                </div>
+                <% } %>
             </div>
         </div>
         <div id="sub_menu_2" class="sub_menu" style="height: 0px; display: none;">
