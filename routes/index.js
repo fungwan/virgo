@@ -1,7 +1,8 @@
+var index = require('../models/index');
+
 module.exports = function(app) {
-  app.get('/', function (req, res) {
-    res.render('index', { title: '首页' });
-  });
+  app.get('/', index.index);
+  
   app.get('/products', function (req, res) {
         res.render('products', { title: '产品中心' });
   });

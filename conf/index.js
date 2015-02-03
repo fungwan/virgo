@@ -10,7 +10,7 @@ exports.relativePath = 'screenshot';
 //about Mysql database
 exports.slave1Config = {
     connectionLimit : 10000,
-    host            : '121.40.188.109',
+    host            : '127.0.0.1',
     user            : 'root',
     password        : '123123',
     database        :'teacher_platform_d1',
