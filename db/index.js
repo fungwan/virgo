@@ -5,8 +5,8 @@
 var async = require('async'),
     sessionPool = require('./mysql_pool.js'),
     //logger = require('../../lib/log.js').logger,
-	conf        = require('../../conf'),
-    global = require('../common/errorCode.js').global;
+	conf        = require('../conf');
+    //global = require('../common/errorCode.js').global;
 
 
 //==================================================================
@@ -27,14 +27,14 @@ var _query = function(sqlData,callback){
 				sessionPool.add('SLAVE2', conf.slave2Config);  
 				
                 console.error(new Date() + "POOL ==> " + err);
-                callback(err, global.ERROR_CRASHMYSQL);
+                callback(err, '');
                 return ;
             }
             
             connection.query( sqlData, function(error, results) {
                 if (error) {
                     console.error('QueryError:' +  sqlData + '--' +error.message);
-                    callback(err,global.ERROR_QUERYMYSQL);
+                    callback(err,'');
                     connection.release();
                     return;
                 }
