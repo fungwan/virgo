@@ -1,3 +1,6 @@
+/**
+ * Created by fungwan on 2015/2/4.
+ */
 var dbService = require("../db"),
     async = require('async');
 
@@ -63,10 +66,10 @@ var index = function(req,res){
                     productInfo.push(data);
                 }
 
-                res.render('index', { title : '首页',
+                res.render('index', { title : '产品中心',
                     product: productInfo });
             }
         });
 };
 
-exports.index= index;
+exports.index = index;

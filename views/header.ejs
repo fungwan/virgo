@@ -65,7 +65,7 @@
                     <h3><a href="http://loyallighting.com/#"><%= product[i]['series'] %></a></h3>
                     <ul>
                         <% for(var m=0; m<product[i]['childArray'].length; m++) {%>
-                        <li><a href="/usharp"><%=product[i]['childArray'][m]['category'] %></a></li>
+                        <li><a href="/productsList?parentId=<%=product[i]['childArray'][m]['id'] %>"><%=product[i]['childArray'][m]['category'] %></a></li>
                         <% } %>
                     </ul>
                 </div>

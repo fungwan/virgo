@@ -1,11 +1,14 @@
-var index = require('../models/index');
+var index        = require('../models/index'),
+    products     = require('../models/products'),
+    productsList = require('../models/products_list');
 
 module.exports = function(app) {
   app.get('/', index.index);
   
-  app.get('/products', function (req, res) {
-        res.render('products', { title: '产品中心' });
-  });
+  app.get('/products',products.index);
+
+  app.get('/productsList',productsList.index);
+
   app.get('/usharp', function (req, res) {
         res.render('usharp', { title: 'U型节能灯' });
   });

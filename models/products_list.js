@@ -1,7 +1,19 @@
+/**
+ * Created by fungwan on 2015/2/4.
+ */
 var dbService = require("../db"),
     async = require('async');
 
 var index = function(req,res){
+
+    var parentId = req.query.parentId;//category id
+    var id = req.query.id;//list id
+    if(id === undefined || id === null){
+        id = 0;
+    }
+    //productName
+    var productName = '';
+
     //get init data(products info)
     var product = {};
     var productInfo = [];
@@ -24,6 +36,23 @@ var index = function(req,res){
                 var tableName = 'product_series as series, product_category as category';
                 var condition = 'where category.parent_id = series.id';
                 dbService.selectMulitValue('series.`name` as series_name, category.id,category.name as category_name',tableName,condition,callback);
+            },
+            get_list: function (callback) {
+
+                var condition = 'WHERE parent_id = ' + parentId;
+                var tableName = 'product_list';
+                dbService.selectMulitValue('id,parent_id,name,img,thumb,description',tableName,condition,callback);
+            },
+            get_one: function (callback) {
+                var condition = '';
+                if(id === 0){
+                    condition = 'WHERE parent_id = ' + parentId + ' order by id limit 1';
+                }else{
+                    condition = 'WHERE parent_id = ' + parentId + ' and id = ' + id;
+                }
+
+                var tableName = 'product_list';
+                dbService.selectValue('name',tableName,condition,callback);
             }
         },
         function(err, results) {
@@ -47,6 +76,9 @@ var index = function(req,res){
 
                     for(var x = 0 ; x < categoryArray.length ;) {
                         var seriesName = categoryArray[x].series_name;
+                        if(categoryArray[x].id === parentId){
+                            productName = seriesName;
+                        }
                         if(seriesName === name){
                             var detail = {
                                 'id'       : categoryArray[x].id,//after parentId
@@ -63,10 +95,20 @@ var index = function(req,res){
                     productInfo.push(data);
                 }
 
-                res.render('index', { title : '首页',
-                    product: productInfo });
+                //get grandson product detail
+                var productsArray = results.get_list;
+
+                //get productName
+                var selectProduct = results.get_one;
+
+                res.render('products_list', {
+                    title        :   selectProduct,
+                    product      :   productInfo,
+                    productId    :   id,
+                    productsList :   productsArray
+                });
             }
         });
 };
 
-exports.index= index;
+exports.index = index;

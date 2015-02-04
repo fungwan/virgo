@@ -45,7 +45,6 @@
     var supportsOrientationChange = "onorientationchange" in window,
             orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
-
     $(function(){
         $(window).bind(orientationEvent, function() {resize();});
         resize();
