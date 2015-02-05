@@ -1,6 +1,7 @@
 var index        = require('../models/index'),
     products     = require('../models/products'),
-    productsList = require('../models/products_list');
+    productsList = require('../models/products_list'),
+    logon = require('../models/logon');
 
 module.exports = function(app) {
   app.get('/', index.index);
@@ -9,9 +10,8 @@ module.exports = function(app) {
 
   app.get('/productsList',productsList.index);
 
-  app.get('/usharp', function (req, res) {
-        res.render('usharp', { title: 'U型节能灯' });
-  });
+  app.get('/logon',logon.index);
+
   app.get('/reg', function (req, res) {
     res.render('reg', { title: '注册' });
   });
