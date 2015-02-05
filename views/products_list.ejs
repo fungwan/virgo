@@ -5,11 +5,11 @@
 <div id="indexMc" style="width:990px; height:420px;position:absolute;z-index:4; display:none;">
     <%
         var data = {};
-        if(productId === 0){
+        if(parseInt(productId) === 0){
             data = productsList[0]
         }else{
-            for(var m=0; i<productsList.length; i++){
-                if(productId === productsList[m].id){
+            for(var m=0; m<productsList.length; m++){
+                if(parseInt(productId) === productsList[m].id){
                     data = productsList[m];
                     break;
                 }
@@ -31,7 +31,7 @@
         </div><!-- proPicbox -->
         <div class="proTxtBox">
             <div class="pro_category_title">
-                <img src="http://loyallighting.com/media/cn/201403/1394579398661758164.jpg" width="233" height="73">
+                <!--img src="http://loyallighting.com/media/cn/201403/1394579398661758164.jpg" width="233" height="73"-->
             </div>
             <div class="pro_name"><%= data['name'] %></div>
             <div class="pro_info_tab">
@@ -93,9 +93,11 @@
         </div><!-- proTxtBox -->    </div>
 </div>
 <div class="product_cate_nav" style=" height:30px; width:100%; position:absolute; bottom:126px;left:0px; z-index:999; line-height:30px; text-align:right">
+    <a href="http://loyallighting.com/index.php/uxingjienengdeng">上一系列</a>
     &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="http://loyallighting.com/index.php/luoxuanxingjienengdeng">下一系列</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <a href="http://loyallighting.com/index.php/lazhuxingjienengdeng">下一系列</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+</div>
 <div id="productList">
     <div class="btn_prev"></div>
     <div class="listBox" style="display:none;">
@@ -209,7 +211,7 @@
     }
 
     function indexMcAnt(){
-        if($.browser.msie) {correctPNG();}
+        //if($.browser.msie) {correctPNG();}
 
         var $album_width=$(".picAlbum>ul>li").size() * 56;
         $(".picAlbum>ul").css({'width':$album_width+'px','margin-left':'auto','margin-right':'auto'});

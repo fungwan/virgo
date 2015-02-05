@@ -7,21 +7,11 @@
 <!-- nav 底图2 -->
 <div id="indexMc" style="width: 990px; height: 400px; position: absolute; z-index: 4; top: 156px; left: 296.5px;">
     <div style="position:relative;">
-        <div class="txt1 item" style="width: 211px; height: 249px; opacity: 0.8; overflow: hidden; top: -50px; left: 0px;">
-            <a href="http://loyallighting.com/index.php/saving"><img src="/images/1394578470882925466.jpg" width="211" height="250"></a>
-        </div>
-        <div class="txt2 item" style="width: 211px; height: 249px; opacity: 1; overflow: hidden; top: 54.203125px; left: 262px;">
-            <a href="http://loyallighting.com/index.php/indoor"><img src="/images/1390606905440143619.png" width="211" height="250"></a>
-        </div>
-        <div class="txt3 item" style="width: 211px; height: 249px; opacity: 0.8; overflow: hidden; top: -40px; left: 529px;">
-            <a href="http://loyallighting.com/index.php/outdoor"><img src="/images/1394758325881262582.jpg" width="211" height="250"></a>
-        </div>
-        <div class="txt4 item" style="width: 211px; height: 249px; opacity: 0.8; overflow: hidden; top: 60px; left: 786px;">
-            <a href="http://loyallighting.com/index.php/new-products"><img src="/images/1390606950005629856.png" width="211" height="250"></a>
-        </div>
-        <!--div class="txt5 item" style="width: 211px; height: 249px; opacity: 0.8; overflow: hidden; top: 60px; left: 986px;">
-            <a href="http://loyallighting.com/index.php/new-products"><img src="/images/1390606950005629856.png" width="211" height="250"></a>
-        </div-->
+        <% for(var i=0; i<productSeries.length; i++) {%>
+            <div class="txt<%= i+1 %> item" style="width: 211px; height: 249px; opacity: 0.8; overflow: hidden; top: -50px; left: 0px;">
+                <a href="/productsList?parentId=<%= productSeries[i]['child_id'] %>"><img src="<%= productSeries[i]['thumb'] %>" width="211" height="250"></a>
+            </div>
+        <% } %>
     </div>
 </div>
 
@@ -96,12 +86,14 @@
     }
 
     function indexMcAnt(){
-        $obj1=$("#indexMc .txt1");$obj2=$("#indexMc .txt2");$obj3=$("#indexMc .txt3");$obj4=$("#indexMc .txt4");
+        $obj1=$("#indexMc .txt1");
+        $obj2=$("#indexMc .txt2");
+        $obj3=$("#indexMc .txt3");//$obj4=$("#indexMc .txt4");
 
         $obj1.css({opacity:0}).show(function(){TweenMax.fromTo($obj1, 1, {css:{opacity:0,left:0,top:60}},{css:{opacity:0.8,left:0,top:-40}});});
         $obj2.css({opacity:0}).show(function(){TweenMax.fromTo($obj2, 1, {css:{opacity:0,left:262,top:0}},{css:{opacity:0.8,left:262,top:60}});});
-        $obj3.css({opacity:0}).show(function(){TweenMax.fromTo($obj3, 1, {css:{opacity:0,left:529,top:60}},{css:{opacity:0.8,left:529,top:-40}});});
-        $obj4.css({opacity:0}).show(function(){TweenMax.fromTo($obj4, 1, {css:{opacity:0,left:786,top:0}},{css:{opacity:0.8,left:786,top:60},onComplete:function(){
+        $obj3.css({opacity:0}).show(function(){TweenMax.fromTo($obj3, 1, {css:{opacity:0,left:529,top:60}},{css:{opacity:0.8,left:529,top:-40},onComplete:function(){
+        //$obj4.css({opacity:0}).show(function(){TweenMax.fromTo($obj4, 1, {css:{opacity:0,left:786,top:0}},{css:{opacity:0.8,left:786,top:60},onComplete:function(){
 
             $("#indexMc .item").hover(function(){
                 $my_top=$(this).position().top;

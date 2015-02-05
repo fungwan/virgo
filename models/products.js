@@ -27,6 +27,17 @@ var index = function(req,res){
                 var tableName = 'product_series as series, product_category as category';
                 var condition = 'where category.parent_id = series.id';
                 dbService.selectMulitValue('series.`name` as series_name, category.id,category.name as category_name',tableName,condition,callback);
+            },
+            get_seriesEx: function (callback) {
+
+                /*
+                sql data:
+                 SELECT series.`name` as series_name, category.id as child_id from product_series as series,(select * from product_category group by parent_id) as category
+                 WHERE series.id = category.parent_id
+                 */
+                var tableName = 'product_series as series,(select * from product_category group by parent_id) as category';
+                var condition = 'WHERE series.id = category.parent_id';
+                dbService.selectMulitValue('series.`name` as series_name, series.thumb as thumb,category.id as child_id',tableName,condition,callback);
             }
         },
         function(err, results) {
@@ -66,8 +77,11 @@ var index = function(req,res){
                     productInfo.push(data);
                 }
 
-                res.render('index', { title : '产品中心',
-                    product: productInfo });
+                //get product seriesEx
+                var productSeriesEx = results.get_seriesEx;
+                res.render('products', { title : '产品中心',
+                                        product: productInfo,
+                                        productSeries: productSeriesEx});
             }
         });
 };

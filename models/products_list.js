@@ -76,9 +76,6 @@ var index = function(req,res){
 
                     for(var x = 0 ; x < categoryArray.length ;) {
                         var seriesName = categoryArray[x].series_name;
-                        if(categoryArray[x].id === parentId){
-                            productName = seriesName;
-                        }
                         if(seriesName === name){
                             var detail = {
                                 'id'       : categoryArray[x].id,//after parentId
@@ -97,10 +94,8 @@ var index = function(req,res){
 
                 //get grandson product detail
                 var productsArray = results.get_list;
-
                 //get productName
                 var selectProduct = results.get_one;
-
                 res.render('products_list', {
                     title        :   selectProduct,
                     product      :   productInfo,
