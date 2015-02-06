@@ -22,6 +22,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app);
 
+app.get('*', function(req, res){
+    res.render('error', {
+        title: 'No Found'
+    })
+});
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });

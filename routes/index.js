@@ -1,7 +1,8 @@
 var index        = require('../models/index'),
     products     = require('../models/products'),
     productsList = require('../models/products_list'),
-    logon = require('../models/logon');
+    logon = require('../models/logon'),
+    verify = require('../models/verify');
 
 module.exports = function(app) {
   app.get('/', index.index);
@@ -11,6 +12,8 @@ module.exports = function(app) {
   app.get('/productsList',productsList.index);
 
   app.get('/logon',logon.index);
+
+  app.post('/verify',verify.index);
 
   app.get('/reg', function (req, res) {
     res.render('reg', { title: '注册' });

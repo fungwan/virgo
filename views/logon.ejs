@@ -75,13 +75,14 @@
             <div class="block">
                 <div class="block-heading">Sign In</div>
                 <div class="block-body">
-                    <form>
-                        <label>Username</label>
-                        <input type="text" class="span12">
-                        <label>Password</label>
-                        <input type="password" class="span12">
-                        <a href="index.html" class="btn btn-primary pull-right">Sign In</a>
-                        <label class="remember-me"><input type="checkbox"> Remember me</label>
+                    <form name="input" action="" method="post">
+                        <label>用户名</label>
+                        <input type="text" class="span12" name = 'userName' id = 'userName'>
+                        <label>密码</label>
+                        <input type="password" class="span12" name = 'password' id = 'password'>
+                        <label class="remember-me"><input type="checkbox"> 记住我</label>
+                        <label id = 'logon_info' display = 'none'>密码错误~</label>
+                        <button class="btn btn-primary">登陆</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>
@@ -92,7 +93,19 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript">
+    $(function () {//当文档载入完毕就执行
+        $("button").bind("click", function () {
+            $.post("/verify",{userName:$("#userName").val(),
+                              password:$("#password").val()},
+                    function (data) {
+                        if(data === 'failure')
+                            $("#logon_info").css({"display":"inline","color":"white"});
+                    });
+        })
+    });
+</script>
 </body>
 </html>
 
