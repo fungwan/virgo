@@ -73,18 +73,18 @@
     <div class="row-fluid">
         <div class="dialog span4">
             <div class="block">
-                <div class="block-heading">Sign In</div>
+                <div class="block-heading">管理员登陆</div>
                 <div class="block-body">
-                    <form name="input" action="" method="post">
-                        <label>用户名</label>
-                        <input type="text" class="span12" name = 'userName' id = 'userName'>
-                        <label>密码</label>
-                        <input type="password" class="span12" name = 'password' id = 'password'>
-                        <label class="remember-me"><input type="checkbox"> 记住我</label>
-                        <label id = 'logon_info' display = 'none'>密码错误~</label>
-                        <button class="btn btn-primary">登陆</button>
-                        <div class="clearfix"></div>
-                    </form>
+                    <!--form name="input" >
+                    </form-->
+                    <label>用户名</label>
+                    <input type="text" class="span12" name = 'userName' id = 'userName'>
+                    <label>密码</label>
+                    <input type="password" class="span12" name = 'password' id = 'password'>
+                    <label class="remember-me"><input type="checkbox"> 记住我</label>
+                    <label id = 'logon_info' style="display:none" >密码输入错误!</label>
+                    <button class="btn btn-primary">登陆</button>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
@@ -101,7 +101,9 @@
                               password:$("#password").val()},
                     function (data) {
                         if(data === 'failure')
-                            $("#logon_info").css({"display":"inline","color":"white"});
+                            $("#logon_info").css({"display":"block","color":"red"});
+                        else
+                            window.location.href="/home";
                     });
         })
     });

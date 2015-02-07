@@ -15,8 +15,12 @@ module.exports = function(app) {
 
   app.post('/verify',verify.index);
 
-  app.get('/reg', function (req, res) {
-    res.render('reg', { title: '注册' });
+  app.get('/home', function (req, res) {
+     if (!req.session.user) {
+         res.render('logon', { title : '管理系统'});
+    }else{
+         res.render('home', { title: '注册' });
+     }
   });
   app.post('/reg', function (req, res) {
   });
