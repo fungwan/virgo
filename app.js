@@ -51,12 +51,6 @@ app.use(session({
     saveUninitialized: true
 }))
 
-/*app.use(session({
- secret : 'blog.fens.me',
- store: new SessionStore(),
- cookie: { maxAge: 90000 } // expire session in 15 min or 900 seconds
- }));*/
-
 app.use(function(req, res, next){
     res.locals.user = req.session.user;
     var err = req.session.error;

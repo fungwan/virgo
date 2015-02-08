@@ -13,6 +13,8 @@ module.exports = function(app) {
 
   app.get('/logon',logon.index);
 
+  app.get('/logout',logon.logout);
+
   app.post('/verify',verify.index);
 
   app.get('/home', function (req, res) {

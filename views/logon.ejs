@@ -81,7 +81,7 @@
                     <input type="text" class="span12" name = 'userName' id = 'userName'>
                     <label>密码</label>
                     <input type="password" class="span12" name = 'password' id = 'password'>
-                    <label class="remember-me"><input type="checkbox"> 记住我</label>
+                    <!--label class="remember-me"><input type="checkbox"> 记住我</label-->
                     <label id = 'logon_info' style="display:none" >密码输入错误!</label>
                     <button class="btn btn-primary">登陆</button>
                     <div class="clearfix"></div>
@@ -97,6 +97,10 @@
 <script type="text/javascript">
     $(function () {//当文档载入完毕就执行
         $("button").bind("click", function () {
+            if(!$("#userName").val()){
+                alert('请输入用户名');
+                return;
+            }
             $.post("/verify",{userName:$("#userName").val(),
                               password:$("#password").val()},
                     function (data) {
