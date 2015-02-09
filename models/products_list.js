@@ -13,16 +13,32 @@ var index = function(req,res){
     }
     //productName
     var productName = '';
+    var caption = '';//tab title
 
     //get init data(products info)
     var product = {};
     var productInfo = [];
 
     async.auto({
+            get_nav: function (callback) {
+
+                var tableName = 'navigation_bar';
+                if (req.session.lang === '0') {
+                    caption = '首页';
+                    dbService.selectMulitValue('name',tableName,'',callback);
+                }else if(req.session.lang === '1'){
+                    caption = 'home';
+                    dbService.selectMulitValue('en_name as name',tableName,'',callback);
+                }
+            },
             get_series: function (callback) {
 
                 var tableName = 'product_series';
-                dbService.selectMulitValue('name',tableName,'',callback);
+                if (req.session.lang === '0') {
+                    dbService.selectMulitValue('name',tableName,'',callback);
+                }else if(req.session.lang === '1'){
+                    dbService.selectMulitValue('en_name as name',tableName,'',callback);
+                }
             },
             get_category: function (callback) {
 
@@ -32,33 +48,48 @@ var index = function(req,res){
                  WHERE category.parent_id = series.id
                  *
                  * */
-
                 var tableName = 'product_series as series, product_category as category';
                 var condition = 'where category.parent_id = series.id';
-                dbService.selectMulitValue('series.`name` as series_name, category.id,category.name as category_name',tableName,condition,callback);
+                if (req.session.lang === '0') {
+                    dbService.selectMulitValue('series.`name` as series_name, category.id,category.name as category_name',tableName,condition,callback);
+                }else if(req.session.lang === '1'){
+                    dbService.selectMulitValue('series.`en_name` as series_name, category.id,category.en_name as category_name',tableName,condition,callback);
+                }
             },
-            get_list: function (callback) {
-
-                var condition = 'WHERE parent_id = ' + parentId;
-                var tableName = 'product_list';
-                dbService.selectMulitValue('id,parent_id,name,img,thumb,description',tableName,condition,callback);
-            },
-            get_one: function (callback) {
+            get_selected: function (callback) {
                 var condition = '';
-                if(id === 0){
+                if(id === 0){//0表示子目录默认为0即某系列的第一个产品
                     condition = 'WHERE parent_id = ' + parentId + ' order by id limit 1';
                 }else{
                     condition = 'WHERE parent_id = ' + parentId + ' and id = ' + id;
                 }
 
                 var tableName = 'product_list';
-                dbService.selectValue('name',tableName,condition,callback);
+                if (req.session.lang === '0') {
+                    dbService.selectValue('name',tableName,condition,callback);
+                }else if(req.session.lang === '1'){
+                    //dbService.selectValue('name',tableName,condition,callback);
+                    dbService.selectValue('en_name',tableName,condition,callback);
+                }
+            },
+            get_list: function (callback) {
+
+                var condition = 'WHERE parent_id = ' + parentId;
+                var tableName = 'product_list';
+                if (req.session.lang === '0') {
+                    dbService.selectMulitValue('id,parent_id,name,img,thumb,description',tableName,condition,callback);
+                }else if(req.session.lang === '1'){
+                    dbService.selectMulitValue('id,parent_id,en_name as name,img,thumb,description',tableName,condition,callback);
+                }
             }
         },
         function(err, results) {
             if(err !== null){
                 console.error('sql error');
             }else{
+                //get nav
+                var nav = results.get_nav;
+
                 //get root product
                 var seriesArray = results.get_series;
 
@@ -95,9 +126,11 @@ var index = function(req,res){
                 //get grandson product detail
                 var productsArray = results.get_list;
                 //get productName
-                var selectProduct = results.get_one;
+                var selectProduct = results.get_selected;
+
                 res.render('products_list', {
                     title        :   selectProduct,
+                    navigation_bar : nav,
                     product      :   productInfo,
                     productId    :   id,
                     productsList :   productsArray

@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //new add the following code
 //app.use(express.cookieParser());
 //app.use(express.cookieSession({ secret: 'tobo!', cookie: { maxAge: 60 * 60 * 1000 }}));//必须位于app.use(app.router);前
-app.use(express.cookieSession({secret : 'session_cookie_secret'}));
+//app.use(express.cookieSession({secret : 'session_cookie_secret'}));
 
 var options = {
      host: 'localhost',// Host name for database connection.
@@ -52,12 +52,18 @@ app.use(session({
 }))
 
 app.use(function(req, res, next){
-    res.locals.user = req.session.user;
-    var err = req.session.error;
+    //res.locals.user = req.session.user;
+    var kind = req.session.lang;
+    if (kind === '0' || kind === undefined){
+        res.locals.selected = '0'
+    }else{
+        res.locals.selected = '1'
+    }
+    /*var err = req.session.error;
     delete req.session.error;
     res.locals.message = '';
     if (err) res.locals.message = '<div class="alert alert-error">' + err + '</div>';
-    var welcome="";
+    var welcome="";*/
     next();
 });
 

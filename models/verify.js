@@ -12,7 +12,7 @@ var index = function(req,res){
     var password = req.body['password'];
 
     if(password === 'adminxx'){
-        req.session.user = {'name':'fengyun'};
+        req.session.user = {'name':'admin'};
         res.send('success');
     }
     else{

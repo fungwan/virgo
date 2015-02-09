@@ -5,12 +5,30 @@ var index = function(req,res){
     //get init data(products info)
     var product = {};
     var productInfo = [];
-
+    if (!req.session.lang) {
+        req.session.lang = '0';
+    }
+    var caption = '';
     async.auto({
+            get_nav: function (callback) {
+
+                var tableName = 'navigation_bar';
+                if (req.session.lang === '0') {
+                    caption = '首页';
+                    dbService.selectMulitValue('name',tableName,'',callback);
+                }else if(req.session.lang === '1'){
+                    caption = 'home';
+                    dbService.selectMulitValue('en_name as name',tableName,'',callback);
+                }
+            },
             get_series: function (callback) {
 
                 var tableName = 'product_series';
-                dbService.selectMulitValue('name',tableName,'',callback);
+                if (req.session.lang === '0') {
+                    dbService.selectMulitValue('name',tableName,'',callback);
+                }else if(req.session.lang === '1'){
+                    dbService.selectMulitValue('en_name as name',tableName,'',callback);
+                }
             },
             get_category: function (callback) {
 
@@ -23,13 +41,19 @@ var index = function(req,res){
 
                 var tableName = 'product_series as series, product_category as category';
                 var condition = 'where category.parent_id = series.id';
-                dbService.selectMulitValue('series.`name` as series_name, category.id,category.name as category_name',tableName,condition,callback);
+                if (req.session.lang === '0') {
+                    dbService.selectMulitValue('series.`name` as series_name, category.id,category.name as category_name',tableName,condition,callback);
+                }else if(req.session.lang === '1'){
+                    dbService.selectMulitValue('series.`en_name` as series_name, category.id,category.en_name as category_name',tableName,condition,callback);
+                }
             }
         },
         function(err, results) {
             if(err !== null){
                 console.error('sql error');
             }else{
+                //get nav
+                var nav = results.get_nav;
                 //get root product
                 var seriesArray = results.get_series;
 
@@ -63,7 +87,8 @@ var index = function(req,res){
                     productInfo.push(data);
                 }
 
-                res.render('index', { title : '首页',
+                res.render('index', { title : caption,
+                    navigation_bar : nav,
                     product: productInfo });
             }
         });

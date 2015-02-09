@@ -35,29 +35,35 @@
 <div id="mainbox" style="width: 1600px; height: 729px;">
 <div class="page_bg"></div>
 <div id="topLink">
-    <div class="lang">+&nbsp;<a href="http://www.loyallighting.com/">English</a>&nbsp;+&nbsp;<a href="http://loyallighting.com/index.php/contact">联系我们</a>&nbsp;+</div>
-    <div class="share">
-        <a href="http://loyallighting.com/#"><img src="/images/f2.jpg" width="15" height="15"></a>
-        <a href="http://loyallighting.com/#"><img src="/images/f3.jpg" width="15" height="15"></a>
-        <a href="http://loyallighting.com/#"><img src="/images/f4.jpg" width="15" height="15"></a>
-        <a href="http://loyallighting.com/#"><img src="/images/f5.jpg" width="15" height="15"></a>
+    <div class="lang">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select>
+            <% if(selected === '0'){%>
+                <option value="0" selected="selected" >简体中文</option>
+                <option value="1">English</option>
+            <%}else{%>
+                <option value="0">简体中文</option>
+                <option value="1"  selected="selected">English</option>
+            <%}%>
+        </select>
     </div>
+
 </div>
 
 <div class="nav_bg" style="width: 1600px;">
     <ul id="main_nav">
-        <li target="sub_menu_1" class=""><a href="/products">产品中心</a></li>
-        <li target="sub_menu_2"><a href="http://loyallighting.com/index.php/solution">解决方案</a></li>
-        <li target="sub_menu_3"><a href="http://loyallighting.com/index.php/services">服务与支持</a></li>
-        <li class="logo"><a href="http://loyallighting.com/index.php/" style="display:block; width:100%;height:100%;"></a></li>
-        <li target="sub_menu_4"><a href="http://loyallighting.com/index.php/about">关于莱亚</a></li>
-        <li target="sub_menu_5"><a href="http://loyallighting.com/index.php/news">新闻&amp;动态</a></li>
-        <li target="sub_menu_6"><a href="http://loyallighting.com/index.php/light">莱亚之光</a></li>
+        <li target="sub_menu_1" class=""><a href="/products"><%= navigation_bar[0]['name'] %></a></li>
+        <li target="sub_menu_2"><a href="http://loyallighting.com/index.php/solution"><%= navigation_bar[1]['name'] %></a></li>
+        <li target="sub_menu_3"><a href="http://loyallighting.com/index.php/services"><%= navigation_bar[2]['name'] %></a></li>
+        <li class="logo"><a href="/" style="display:block; width:100%;height:100%;"></a></li>
+        <li target="sub_menu_4"><a href="http://loyallighting.com/index.php/about"><%= navigation_bar[3]['name'] %></a></li>
+        <li target="sub_menu_5"><a href="http://loyallighting.com/index.php/news"><%= navigation_bar[4]['name'] %></a></li>
+        <li target="sub_menu_6"><a href="http://loyallighting.com/index.php/light"><%= navigation_bar[5]['name'] %></a></li>
     </ul>
     <div id="clear_submenu"></div>
     <div id="sub_nav" style="opacity: 1; display: none; height: 339px;">
         <div id="sub_menu_1" class="sub_menu" style="height: 0px; display: none;">
-            <h2>产品中心</h2>
+            <h2><%= navigation_bar[0]['name'] %></h2>
             <div class="sub_menu_content">
                 <!-- init data here loop -->
                 <% for(var i=0; i<product.length; i++) {%>
@@ -73,7 +79,7 @@
             </div>
         </div>
         <div id="sub_menu_2" class="sub_menu" style="height: 0px; display: none;">
-            <h2>解决方案</h2>
+            <h2><%= navigation_bar[1]['name'] %></h2>
             <div class="sub_menu_content">
                 <div class="category">
                     <h3></h3>
@@ -85,7 +91,7 @@
             </div>
         </div>
         <div id="sub_menu_3" class="sub_menu" style="height: 0px; display: none;">
-            <h2>服务与支持</h2>
+            <h2><%= navigation_bar[2]['name'] %></h2>
             <div class="sub_menu_content">
                 <div class="category">
                     <h3></h3>
@@ -97,7 +103,7 @@
             </div>
         </div>
         <div id="sub_menu_4" class="sub_menu" style="height: 0px; display: none;">
-            <h2>关于莱亚</h2>
+            <h2><%= navigation_bar[3]['name'] %></h2>
             <div class="sub_menu_content">
                 <div class="category">
                     <h3></h3>
@@ -113,7 +119,7 @@
             </div>
         </div>
         <div id="sub_menu_5" class="sub_menu" style="height: 0px; display: none;">
-            <h2>新闻&amp;动态</h2>
+            <h2><%= navigation_bar[4]['name'] %></h2>
             <div class="sub_menu_content">
                 <div class="category">
                     <h3></h3>
@@ -126,7 +132,7 @@
             </div>
         </div>
         <div id="sub_menu_6" class="sub_menu" style="height: 0px; display: none;">
-            <h2>莱亚之光</h2>
+            <h2><%= navigation_bar[5]['name'] %></h2>
             <div class="sub_menu_content">
                 <div class="category">
                     <h3>光源的发展史</h3>
@@ -168,6 +174,7 @@
 </div>
 
 <script language="javascript">
+
     $(function(){
         $("#clear_submenu").hover(function(){
             $("#main_nav li:not(.logo,.nosub)").removeClass("current");
@@ -176,4 +183,22 @@
         });
     });
 
+    $(function () {
+        $("select").bind("change", function () {
+            var kind = '';
+            if ($(this).val() == "0"){
+                kind = '0'
+            }
+            else if($(this).val() == "1"){
+                kind = '1'
+            }
+
+            $.post("/switch_lang",{language:kind},
+                    function (data) {
+                        if(data === 'success'){
+                            window.location.href="/";
+                        }
+            });
+        })
+    });
 </script>
