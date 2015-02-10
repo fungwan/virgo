@@ -7,14 +7,14 @@ body{background-color:#000000; height:100%; }
 	z-index:999;
 	background-image: url(../images/nav_bg.png);
 	background-repeat: repeat-x;
-	width:100%; height:111px; 
+	width:100%; height:20%;
 }
 #mainbox{overflow:hidden; position:relative;}
 #main_nav{display:block; width:990px; height:111px; margin:0 auto;}
 #main_nav li{width:130px; text-align:center; height:111px; float:left; line-height:111px;}
 #main_nav li.current{background:url(../images/nav_tag.png) center bottom no-repeat;
 filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="../images/nav_tag.png"); }
-#main_nav li.logo{background:url(../images/logo.jpg) no-repeat; width:170px; height:111px; margin:0 20px;}
+#main_nav li.logo{background:url(../images/logo.jpg) no-repeat; width:170px; height:100%; margin:0 20px;}
 #main_nav li a{font-size:16px; color:#EFEFEF; text-decoration:none;}
 
 #clear_submenu{display:block; width:100%; height:10px; position:absolute; z-index:9999; top:0px;}

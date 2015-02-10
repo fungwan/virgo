@@ -32,146 +32,147 @@
     <style type="text/css"></style>
 </head>
 <body>
-<div id="mainbox" style="width: 1600px; height: 729px;">
-<div class="page_bg"></div>
-<div id="topLink">
-    <div class="lang">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="mainbox" >
+
+    <div class="lang" style="
+        height: 15px;
+        position: absolute;
+        z-index: 1000;
+        top: 10px;
+        right: 8px;">
         <select>
             <% if(selected === '0'){%>
-                <option value="0" selected="selected" >简体中文</option>
-                <option value="1">English</option>
+            <option value="0" selected="selected" >简体中文</option>
+            <option value="1">English</option>
             <%}else{%>
-                <option value="0">简体中文</option>
-                <option value="1"  selected="selected">English</option>
+            <option value="0">简体中文</option>
+            <option value="1"  selected="selected">English</option>
             <%}%>
         </select>
     </div>
 
-</div>
-
-<div class="nav_bg" style="width: 1600px;">
-    <ul id="main_nav">
-        <li target="sub_menu_1" class=""><a href="/products"><%= navigation_bar[0]['name'] %></a></li>
-        <li target="sub_menu_2"><a href="http://loyallighting.com/index.php/solution"><%= navigation_bar[1]['name'] %></a></li>
-        <li target="sub_menu_3"><a href="http://loyallighting.com/index.php/services"><%= navigation_bar[2]['name'] %></a></li>
-        <li class="logo"><a href="/" style="display:block; width:100%;height:100%;"></a></li>
-        <li target="sub_menu_4"><a href="http://loyallighting.com/index.php/about"><%= navigation_bar[3]['name'] %></a></li>
-        <li target="sub_menu_5"><a href="http://loyallighting.com/index.php/news"><%= navigation_bar[4]['name'] %></a></li>
-        <li target="sub_menu_6"><a href="http://loyallighting.com/index.php/light"><%= navigation_bar[5]['name'] %></a></li>
-    </ul>
-    <div id="clear_submenu"></div>
-    <div id="sub_nav" style="opacity: 1; display: none; height: 339px;">
-        <div id="sub_menu_1" class="sub_menu" style="height: 0px; display: none;">
-            <h2><%= navigation_bar[0]['name'] %></h2>
-            <div class="sub_menu_content">
-                <!-- init data here loop -->
-                <% for(var i=0; i<product.length; i++) {%>
-                <div class="category" >
-                    <h3><a href="http://loyallighting.com/#"><%= product[i]['series'] %></a></h3>
-                    <ul>
-                        <% for(var m=0; m<product[i]['childArray'].length; m++) {%>
-                        <li><a href="/productsList?parentId=<%=product[i]['childArray'][m]['id'] %>"><%=product[i]['childArray'][m]['category'] %></a></li>
-                        <% } %>
-                    </ul>
-                </div>
-                <% } %>
-            </div>
-        </div>
-        <div id="sub_menu_2" class="sub_menu" style="height: 0px; display: none;">
-            <h2><%= navigation_bar[1]['name'] %></h2>
-            <div class="sub_menu_content">
-                <div class="category">
-                    <h3></h3>
-                    <ul class="sub2">
-                        <li><a href="http://loyallighting.com/index.php/cases">工程案例</a></li>
-                        <li><a href="http://loyallighting.com/index.php/application">行业应用</a></li>
-                    </ul>
+    <div class="nav_bg">
+        <ul id="main_nav">
+            <li target="sub_menu_1" class=""><a href="/products"><%= navigation_bar[0]['name'] %></a></li>
+            <li target="sub_menu_2"><a href="http://loyallighting.com/index.php/solution"><%= navigation_bar[1]['name'] %></a></li>
+            <li target="sub_menu_3"><a href="http://loyallighting.com/index.php/services"><%= navigation_bar[2]['name'] %></a></li>
+            <li class="logo"><a href="/" style="display:block; width:100%;height:100%;"></a></li>
+            <li target="sub_menu_4"><a href="http://loyallighting.com/index.php/about"><%= navigation_bar[3]['name'] %></a></li>
+            <li target="sub_menu_5"><a href="http://loyallighting.com/index.php/news"><%= navigation_bar[4]['name'] %></a></li>
+            <li target="sub_menu_6"><a href="http://loyallighting.com/index.php/light"><%= navigation_bar[5]['name'] %></a></li>
+        </ul>
+        <div id="clear_submenu"></div>
+        <div id="sub_nav" style="opacity: 1; display: none; height: 339px;">
+            <div id="sub_menu_1" class="sub_menu" style="height: 0px; display: none;">
+                <h2><%= navigation_bar[0]['name'] %></h2>
+                <div class="sub_menu_content">
+                    <!-- init data here loop -->
+                    <% for(var i=0; i<product.length; i++) {%>
+                    <div class="category" >
+                        <h3><a href="http://loyallighting.com/#"><%= product[i]['series'] %></a></h3>
+                        <ul>
+                            <% for(var m=0; m<product[i]['childArray'].length; m++) {%>
+                            <li><a href="/productsList?parentId=<%=product[i]['childArray'][m]['id'] %>"><%=product[i]['childArray'][m]['category'] %></a></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %>
                 </div>
             </div>
-        </div>
-        <div id="sub_menu_3" class="sub_menu" style="height: 0px; display: none;">
-            <h2><%= navigation_bar[2]['name'] %></h2>
-            <div class="sub_menu_content">
-                <div class="category">
-                    <h3></h3>
-                    <ul class="sub2">
-                        <li><a href="http://loyallighting.com/index.php/edu">照明知识</a></li>
-                        <li><a href="http://loyallighting.com/index.php/downloads">下载专区</a></li>
-                    </ul>
+            <div id="sub_menu_2" class="sub_menu" style="height: 0px; display: none;">
+                <h2><%= navigation_bar[1]['name'] %></h2>
+                <div class="sub_menu_content">
+                    <div class="category">
+                        <h3></h3>
+                        <ul class="sub2">
+                            <li><a href="http://loyallighting.com/index.php/cases">工程案例</a></li>
+                            <li><a href="http://loyallighting.com/index.php/application">行业应用</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="sub_menu_4" class="sub_menu" style="height: 0px; display: none;">
-            <h2><%= navigation_bar[3]['name'] %></h2>
-            <div class="sub_menu_content">
-                <div class="category">
-                    <h3></h3>
-                    <ul>
-                        <li><a href="http://loyallighting.com/index.php/about-loyal">关于莱亚</a></li>
-                        <li><a href="http://loyallighting.com/index.php/brand-idea">品牌理念</a></li>
-                        <li><a href="http://loyallighting.com/index.php/history">发展历程</a></li>
-                        <li><a href="http://loyallighting.com/index.php/certification">资质认证</a></li>
-                        <li><a href="http://loyallighting.com/index.php/reality">实景展示</a></li>
-                        <li><a href="http://loyallighting.com/index.php/development">研发系统</a></li>
-                    </ul>
+            <div id="sub_menu_3" class="sub_menu" style="height: 0px; display: none;">
+                <h2><%= navigation_bar[2]['name'] %></h2>
+                <div class="sub_menu_content">
+                    <div class="category">
+                        <h3></h3>
+                        <ul class="sub2">
+                            <li><a href="http://loyallighting.com/index.php/edu">照明知识</a></li>
+                            <li><a href="http://loyallighting.com/index.php/downloads">下载专区</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="sub_menu_5" class="sub_menu" style="height: 0px; display: none;">
-            <h2><%= navigation_bar[4]['name'] %></h2>
-            <div class="sub_menu_content">
-                <div class="category">
-                    <h3></h3>
-                    <ul class="sub2">
-                        <li><a href="http://loyallighting.com/index.php/company-news">公司资讯</a></li>
-                        <li><a href="http://loyallighting.com/index.php/industry">行业资讯</a></li>
-                        <li><a href="http://loyallighting.com/index.php/exhibition">展会动态</a></li>
-                    </ul>
+            <div id="sub_menu_4" class="sub_menu" style="height: 0px; display: none;">
+                <h2><%= navigation_bar[3]['name'] %></h2>
+                <div class="sub_menu_content">
+                    <div class="category">
+                        <h3></h3>
+                        <ul>
+                            <li><a href="http://loyallighting.com/index.php/about-loyal">关于莱亚</a></li>
+                            <li><a href="http://loyallighting.com/index.php/brand-idea">品牌理念</a></li>
+                            <li><a href="http://loyallighting.com/index.php/history">发展历程</a></li>
+                            <li><a href="http://loyallighting.com/index.php/certification">资质认证</a></li>
+                            <li><a href="http://loyallighting.com/index.php/reality">实景展示</a></li>
+                            <li><a href="http://loyallighting.com/index.php/development">研发系统</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="sub_menu_6" class="sub_menu" style="height: 0px; display: none;">
-            <h2><%= navigation_bar[5]['name'] %></h2>
-            <div class="sub_menu_content">
-                <div class="category">
-                    <h3>光源的发展史</h3>
-                    <ul class="sub2">
-
-                        <li><a href="http://loyallighting.com/index.php/light-909.html">第一代光源-白炽灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/light-910.html">第二代光源-低气压气体放电灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/light-911.html">第三代光源-HID高强度气体放电灯</a></li>
-
-                        <li><a href="http://loyallighting.com/index.php/light-912.html">第四代光源-LED发光二极管</a></li>
-
-                    </ul>
+            <div id="sub_menu_5" class="sub_menu" style="height: 0px; display: none;">
+                <h2><%= navigation_bar[4]['name'] %></h2>
+                <div class="sub_menu_content">
+                    <div class="category">
+                        <h3></h3>
+                        <ul class="sub2">
+                            <li><a href="http://loyallighting.com/index.php/company-news">公司资讯</a></li>
+                            <li><a href="http://loyallighting.com/index.php/industry">行业资讯</a></li>
+                            <li><a href="http://loyallighting.com/index.php/exhibition">展会动态</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="category">
-                    <h3>光与环境</h3>
-                    <ul class="sub2">
+            </div>
+            <div id="sub_menu_6" class="sub_menu" style="height: 0px; display: none;">
+                <h2><%= navigation_bar[5]['name'] %></h2>
+                <div class="sub_menu_content">
+                    <div class="category">
+                        <h3>光源的发展史</h3>
+                        <ul class="sub2">
 
-                        <li><a href="http://loyallighting.com/index.php/light-913.html">绿色照明</a></li>
+                            <li><a href="http://loyallighting.com/index.php/light-909.html">第一代光源-白炽灯</a></li>
 
-                        <li><a href="http://loyallighting.com/index.php/light-914.html">能源和光源企业宗旨</a></li>
+                            <li><a href="http://loyallighting.com/index.php/light-910.html">第二代光源-低气压气体放电灯</a></li>
 
-                    </ul>
-                </div>
-                <div class="category">
-                    <h3>光与艺术</h3>
-                    <ul class="sub2">
+                            <li><a href="http://loyallighting.com/index.php/light-911.html">第三代光源-HID高强度气体放电灯</a></li>
 
-                        <li><a href="http://loyallighting.com/index.php/light-916.html">生活中的光</a></li>
+                            <li><a href="http://loyallighting.com/index.php/light-912.html">第四代光源-LED发光二极管</a></li>
 
-                        <li><a href="http://loyallighting.com/index.php/light-915.html">光的艺术作用</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>光与环境</h3>
+                        <ul class="sub2">
 
-                    </ul>
+                            <li><a href="http://loyallighting.com/index.php/light-913.html">绿色照明</a></li>
+
+                            <li><a href="http://loyallighting.com/index.php/light-914.html">能源和光源企业宗旨</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>光与艺术</h3>
+                        <ul class="sub2">
+
+                            <li><a href="http://loyallighting.com/index.php/light-916.html">生活中的光</a></li>
+
+                            <li><a href="http://loyallighting.com/index.php/light-915.html">光的艺术作用</a></li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <script language="javascript">
 
