@@ -1,9 +1,7 @@
 /**
  * Created by fungwan on 2015/2/7.
  */
-/**
- * Created by Administrator on 2015/2/7.
- */
+
 var dbService = require("../db"),
     async = require('async');
 

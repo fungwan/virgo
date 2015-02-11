@@ -1,3 +1,10 @@
+/*!
+ * index.js
+ * https://github.com/fungwan
+ *
+ * 网站前台首页
+ */
+
 var dbService = require("../db"),
     async = require('async');
 

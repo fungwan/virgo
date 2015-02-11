@@ -1,0 +1,111 @@
+<%- include bg_header %>
+<!--后台右侧栏位的布局-->
+
+<style type="text/css">
+</style>
+<script language="javascript">
+    $(function () {
+        $(".select-productsSeries").bind("change", function () {
+            if ($(this).val() !== "-1"){
+                $(".select-productsCategory").css({display:'inline'});
+            }else{
+                $(".select-productsCategory").css({display:'none'});
+            }
+        });
+
+        $(".select-productsCategory").bind("change", function () {
+            var kind = '';
+            if ($(this).val() == "0"){
+                kind = '0'
+            }
+            else if($(this).val() == "1"){
+                kind = '1'
+            }
+
+            /*$.post("/switch_lang",{language:kind},
+             function (data) {
+             if(data === 'success'){
+             window.location.href="/";
+             }
+             });*/
+        });
+    });
+</script>
+<div class="span9">
+    <h1 class="page-title">Products</h1>
+    <div class="add-product" style="position:relative">
+        <div>
+            <label style="display :inline">按类型筛选:</label>
+            <select class="select-productsSeries">
+                <option value="-1">全部</option>
+                <option value="旅游">节能灯系列</option>
+                <option value="运动">LED室内灯</option>
+                <option value="购物">LED室外灯</option>
+            </select>
+            <select class="select-productsCategory" style="display: none">
+                <option value="看书">看书</option>
+                <option value="旅游">旅游</option>
+                <option value="运动">运动</option>
+                <option value="购物">购物</option>
+            </select>
+            <button class="btn btn-primary" style="position:absolute;right:10px;">
+                <i class="icon-plus"></i> 添加产品
+            </button>
+        </div>
+    </div>
+    <div class="well">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th style="width: 26px;"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Tompson</td>
+                <td>the_mark7</td>
+                <td>
+                    <a href="user.html"><i class="icon-pencil"></i></a>
+                    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <ul>
+            <li><a href="#">Prev</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+
+    <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Delete Confirmation</h3>
+        </div>
+        <div class="modal-body">
+            <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<%- include bg_footer %>
+
+
