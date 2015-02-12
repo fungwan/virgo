@@ -8,26 +8,42 @@
         $(".select-productsSeries").bind("change", function () {
             if ($(this).val() !== "-1"){
                 $(".select-productsCategory").css({display:'inline'});
+                //first step empty option
+                $(".select-productsCategory").empty();
+                //and get info in this series
+                var parentId = parseInt($(this).val()) + 1;
+                $.get("/select_category?parentId=" + parentId,function(data){
+                    $('<option value="-1">选择型号</option>').appendTo(".select-productsCategory");
+                    for(var i=0; i<data.length; i++) {
+                        var html = '<option value=' + data[i].id + '>' + data[i].name + '</option>';
+                        $(html).appendTo(".select-productsCategory");
+                    }
+                });
+
             }else{
                 $(".select-productsCategory").css({display:'none'});
+                //get all of products info
+                //todo
             }
         });
 
         $(".select-productsCategory").bind("change", function () {
-            var kind = '';
-            if ($(this).val() == "0"){
-                kind = '0'
-            }
-            else if($(this).val() == "1"){
-                kind = '1'
-            }
+            $(".select-productsCategory option[value='-1']").remove(); //删除Select中'选择型号'
 
-            /*$.post("/switch_lang",{language:kind},
-             function (data) {
-             if(data === 'success'){
-             window.location.href="/";
-             }
-             });*/
+            var parentId = $(this).val();
+            $.get("/select_list?parentId=" + parentId,function(data){
+                //alert(data[0].name);
+                var $html = '<tr>' +
+                        '<td>1</td><td>Mark</td><td>Tompson</td><td>the_mark8</td><td><a href="user.html"><i class="icon-pencil"></i></a><a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a></td>' +
+                        '</tr>';
+
+                $("#tb_productList").replaceWith($html);
+                /*for(var i=0; i<data.length; i++) {
+                    var html = '<option value=' + data[i].id + '>' + data[i].name + '</option>';
+                    $(html).appendTo(".select-productsCategory");
+                }*/
+            });
+            //window.location.href="/";
         });
     });
 </script>
@@ -38,15 +54,12 @@
             <label style="display :inline">按类型筛选:</label>
             <select class="select-productsSeries">
                 <option value="-1">全部</option>
-                <option value="旅游">节能灯系列</option>
-                <option value="运动">LED室内灯</option>
-                <option value="购物">LED室外灯</option>
+                <%for(var m=0; m<productSeries.length; m++){%>
+                    <option value=<%=m %> > <%= productSeries[m]['name'] %></option>
+                <%}%>
             </select>
             <select class="select-productsCategory" style="display: none">
-                <option value="看书">看书</option>
-                <option value="旅游">旅游</option>
-                <option value="运动">运动</option>
-                <option value="购物">购物</option>
+                <option value="-1">选择型号</option>
             </select>
             <button class="btn btn-primary" style="position:absolute;right:10px;">
                 <i class="icon-plus"></i> 添加产品
@@ -64,7 +77,7 @@
                 <th style="width: 26px;"></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id = "tb_productList">
             <tr>
                 <td>1</td>
                 <td>Mark</td>
