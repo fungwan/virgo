@@ -4,7 +4,21 @@
 <style type="text/css">
 </style>
 <script language="javascript">
+
     $(function () {
+        laypage({
+            cont: $('#page'), //容器。值支持id名、原生dom对象，jquery对象,
+            pages: <%=page %>,
+            skip: true, //是否开启跳页
+            skin: '#AF0000',
+            groups: 5, //连续显示分页数
+            hash: true, //会对url追加#!laypage_
+            jump: function(obj){
+                //$('#view6').html('看看URL的变化。通过hash，你可以记录当前页。当前正处于第'+obj.curr+'页');
+                alert(obj.curr);
+            }
+        });
+
         $(".select-productsSeries").bind("change", function () {
             if ($(this).val() !== "-1"){
                 $(".select-productsCategory").css({display:'inline'});
@@ -23,7 +37,20 @@
             }else{
                 $(".select-productsCategory").css({display:'none'});
                 //get all of products info
-                //todo
+                laypage({
+                    cont: $('#page'),
+                    pages: <%=page %>,
+                    skip: true,
+                    skin: '#AF0000',
+                    groups: 3,
+                    hash: true,
+                    jump: function(obj){
+                        //$('#view6').html('看看URL的变化。通过hash，你可以记录当前页。当前正处于第'+obj.curr+'页');
+                        $.get("/select_listByPageId?pageId=" + obj.curr,function(data){
+                            alert(data['productsList'][0].name);
+                        });
+                    }
+                });
             }
         });
 
@@ -31,8 +58,22 @@
             $(".select-productsCategory option[value='-1']").remove(); //删除Select中'选择型号'
 
             var parentId = $(this).val();
-            $.get("/select_list?parentId=" + parentId,function(data){
-                //alert(data[0].name);
+
+            laypage({
+                cont: $('#page'),
+                pages: <%=page %>,
+                skip: true,
+                skin: '#AF0000',
+                groups: 3,
+                hash: true,
+                jump: function(obj){
+                    //$('#view6').html('看看URL的变化。通过hash，你可以记录当前页。当前正处于第'+obj.curr+'页');
+                    $.get("/select_listByPageId?parentId=" + parentId + '&pageId=' + obj.curr,function(data){
+                        alert(data['productsList'][0].name);
+                    });
+                }
+            });
+            /*$.get("/select_list?parentId=" + parentId,function(data){
                 var $html = '<tr>' +
                         '<td>1</td><td>Mark</td><td>Tompson</td><td>the_mark8</td><td><a href="user.html"><i class="icon-pencil"></i></a><a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a></td>' +
                         '</tr>';
@@ -41,8 +82,8 @@
                 /*for(var i=0; i<data.length; i++) {
                     var html = '<option value=' + data[i].id + '>' + data[i].name + '</option>';
                     $(html).appendTo(".select-productsCategory");
-                }*/
-            });
+                }
+            });*/
             //window.location.href="/";
         });
     });
@@ -91,15 +132,15 @@
             </tbody>
         </table>
     </div>
-    <div class="pagination">
-        <ul>
+    <div class="pagination" id = 'page'>
+        <!--ul>
             <li><a href="#">Prev</a></li>
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
             <li><a href="#">Next</a></li>
-        </ul>
+        </ul-->
     </div>
 
     <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

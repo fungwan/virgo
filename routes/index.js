@@ -25,4 +25,5 @@ module.exports = function(app) {
     app.get('/manage_products',manage_products.index);
     app.get('/select_category',manage_products.category);
     app.get('/select_list',manage_products.list);
+    app.get('/select_listByPageId',manage_products.listByPage);
 };
