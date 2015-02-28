@@ -4,18 +4,18 @@
         <div style="position:relative;">
             <div class="txt1 item" style="width: 337px; height: 47px; opacity: 1; left: 330px;"><img src="/images/txt1.png" width="337" height="47"></div>
             <div class="txt2 item" style="width: 327px; height: 17px; opacity: 1; overflow: hidden; top: 60px; left: 330px;"><img src="/images/txt2.png" width="327" height="17"></div>
-            <div class="imgList item" style="width: 500px; height: 430px; top: 110px; overflow: hidden; opacity: 1; left: 220px;">
+            <!--div class="imgList item" style="width: 500px; height: 430px; top: 110px; overflow: hidden; opacity: 1; left: 220px;">
                 <div class="bx-wrapper" style="width:530px; position:relative;"><div class="bx-window" style="height:400px; width:530px; position:relative; overflow:hidden;"><ul>
                             <li style="list-style: none; position: absolute; top: 0px; left: 0px; z-index: 98; opacity: 0;"><img src="/images/pro1.png" width="500" height="430"></li>
                             <li style="list-style: none; position: absolute; top: 0px; left: 0px; z-index: 98; opacity: 0;"><img src="/images/pro2.png" width="500" height="430"></li>
                             <li style="list-style: none; position: absolute; top: 0px; left: 0px; z-index: 99; opacity: 1;"><img src="/images/pro3.png" width="500" height="430"></li>
                             <li style="list-style: none; position: absolute; top: 0px; left: 0px; z-index: 98; opacity: 0;"><img src="/images/pro4.png" width="500" height="430"></li>
                         </ul></div></div>
-            </div>
+            </div-->
         </div>
     </div>
 
-    <div id="indexNewsBox" style="top: 559px; left: 305px;">
+    <!--div id="indexNewsBox" style="top: 559px; left: 305px;">
         <div class="newsBox"><div class="pic"><a href="http://loyallighting.com/index.php/news"><img src="/images/ablum1.jpg" width="90" height="90"></a></div><div class="content"><h2>News&nbsp;新闻</h2><ul>
                     <li><a href="http://loyallighting.com/index.php/news-1397.html">3528系列大势已去</a></li>
                     <li><a href="http://loyallighting.com/index.php/news-1396.html">各领风骚 LED散热“木桶”</a></li>
@@ -31,14 +31,22 @@
                 </ul></div></div>
     </div>
 
-    <div id="open_btn" class="state_open" state="open" style="top: 682px; left: 773px;"></div>
-    <div id="copyright"><img src="/images/copyright.jpg" width="266" height="19"></div>
+    <div id="open_btn" class="state_open" state="open" style="top: 682px; left: 773px;"></div-->
 
+    <div id="copyright">
+        <div style="float:left;">
+            <img src="/images/logo_footer.jpg" width="100" height="60">
+        </div>
+        <div style="padding:20px;">
+            <span>Your success is our business!</span>
+        </div>
+    </div>
+    <div id="footerbg" style="width: 100%;"></div>
 </div>
 
 <div id="loading" style="top: 334.5px; left: 770px; opacity: 0;">Loading...</div>
 <script type="text/javascript">
-    $(function(){$.backstretch("http://loyallighting.com/themes/LOYAL/default/images/bg1.jpg");});
+    $(function(){$.backstretch("/images/bg1.jpg");});
 </script>
 
 <script type="text/javascript">
@@ -73,24 +81,24 @@
             //TweenMax.fromTo($('#sub_nav'), 1.8, {css:{opacity:1}}, {css:{opacity: 0,display: 'none'}});
         });
 
-        $("#open_btn").click(function(){
-            if($(this).attr("state")=='open'){
-                $("#indexNewsBox").css({opacity:0}).show();
-                TweenMax.fromTo($('#indexNewsBox'), 0.3, {css:{opacity:0,top:$page_height}},{css:{opacity:1,top:$page_height-170}});
-                $("#open_btn").attr("state",'close');
-                $("#open_btn").attr("class",'state_close');
-
-            }else{
-                if($(this).attr("state")=='close'){
-                    TweenMax.fromTo($('#indexNewsBox'), 0.3, {css:{opacity:1,top:$page_height-170}},{css:{opacity:0,top:$page_height},onComplete:function(){
-                        $("#indexNewsBox").css({opacity:0}).hide();
-                        $("#open_btn").attr("state",'open');
-                        $("#open_btn").attr("class",'state_open');
-                    }});
-                }
-
-            }
-        });
+//        $("#open_btn").click(function(){
+//            if($(this).attr("state")=='open'){
+//                $("#indexNewsBox").css({opacity:0}).show();
+//                TweenMax.fromTo($('#indexNewsBox'), 0.3, {css:{opacity:0,top:$page_height}},{css:{opacity:1,top:$page_height-170}});
+//                $("#open_btn").attr("state",'close');
+//                $("#open_btn").attr("class",'state_close');
+//
+//            }else{
+//                if($(this).attr("state")=='close'){
+//                    TweenMax.fromTo($('#indexNewsBox'), 0.3, {css:{opacity:1,top:$page_height-170}},{css:{opacity:0,top:$page_height},onComplete:function(){
+//                        $("#indexNewsBox").css({opacity:0}).hide();
+//                        $("#open_btn").attr("state",'open');
+//                        $("#open_btn").attr("class",'state_open');
+//                    }});
+//                }
+//
+//            }
+//        });
     });
 
     function resize(){
@@ -131,6 +139,8 @@
 </script>
 
 
-<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 729px; width: 1600px; z-index: -999999; position: fixed;"><img src="/images/bg1.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1600px; height: 867px; max-width: none; z-index: -999999; left: 0px; top: -69px;"></div>
+<!--div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 729px; width: 1600px; z-index: -999999; position: fixed;">
+    <img src="/images/bg1.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1600px; height: 867px; max-width: none; z-index: -999999; left: 0px; top: -69px;">
+</div-->
 
 <%- include footer %>
