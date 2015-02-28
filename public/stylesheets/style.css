@@ -31,9 +31,9 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingM
 #sub_nav .sub_menu{display:none;width:940px; margin:0 auto;}
 #sub_nav .sub_menu h2{ font-size:30px; padding-top:30px;}
 #sub_nav .sub_menu .sub_menu_content{ padding-top:0px;}
-#sub_nav .sub_menu .sub_menu_content .category{float:left; width:260px; margin-right:40px;}
+#sub_nav .sub_menu .sub_menu_content .category{float:left; width:180px; margin-right:40px;}
 #sub_nav .sub_menu .sub_menu_content .category h3{font-size:14px; line-height:40px; border-bottom:1px #FFF solid; margin:20px 0;}
-#sub_nav .sub_menu .sub_menu_content .category li{width:130px; float:left; height:22px; line-height:22px;font-size:12px;}
+#sub_nav .sub_menu .sub_menu_content .category li{width:90px; float:left; height:22px; line-height:22px;font-size:12px;}
 #sub_nav .sub_menu .sub_menu_content .category ul.sub2 li{float:none; width:220px; height:22px; line-height:22px;font-size:12px;}
 #sub_nav .sub_menu .sub_menu_content .category li a:hover{text-decoration:underline;}
 .reloadsource{display:none;}
