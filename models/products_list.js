@@ -24,10 +24,10 @@ var index = function(req,res){
 
                 var tableName = 'navigation_bar';
                 if (req.session.lang === '0') {
-                    caption = '首页';
+                    caption = '伊诺';
                     dbService.selectMulitValue('name',tableName,'',callback);
                 }else if(req.session.lang === '1'){
-                    caption = 'home';
+                    caption = 'Inno';
                     dbService.selectMulitValue('en_name as name',tableName,'',callback);
                 }
             },
@@ -125,6 +125,13 @@ var index = function(req,res){
 
                 //get grandson product detail
                 var productsArray = results.get_list;
+                if(productsArray === ''){
+                    res.render('error', {
+                        title: 'No Found'
+                    })
+                    return;
+                }
+
                 //get productName
                 var selectProduct = results.get_selected;
 
