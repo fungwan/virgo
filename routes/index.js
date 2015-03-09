@@ -14,7 +14,8 @@ module.exports = function(app) {
     app.get('/logon',logon.index);
     app.get('/logout',logon.logout);
     app.post('/verify',verify.index);
-    app.post('/switch_lang',switch_lang.index);
+    //app.post('/switch_lang',switch_lang.index);
+    app.get('/switch_lang',switch_lang.index);
     app.get('/home', function (req, res) {
          if (!req.session.user) {
              res.render('logon', { title : '管理系统'});
