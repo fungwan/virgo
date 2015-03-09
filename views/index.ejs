@@ -1,9 +1,9 @@
 <%- include header %>
 
-    <div id="indexMc" style="width: 990px; height: 580px; position: absolute; z-index: 4; top: 124.5px; left: 305px;">
+    <div id="indexMc" style="width: 990px; height: 580px; position: absolute; z-index: 4; top: 150.5px; left: 305px;">
         <div style="position:relative;">
-            <div class="txt1 item" style="width: 337px; height: 47px; opacity: 1; left: 330px;"><img src="/images/txt1.png" width="337" height="47"></div>
-            <div class="txt2 item" style="width: 327px; height: 17px; opacity: 1; overflow: hidden; top: 60px; left: 330px;"><img src="/images/txt2.png" width="327" height="17"></div>
+            <div class="txt1 item" style="width: 337px; height: 47px; opacity: 1; top: 30px;left: 330px;"><img src="/images/txt1.png" width="337" height="47"></div>
+            <div class="txt2 item" style="width: 327px; height: 26px; opacity: 1; overflow: hidden; top: 80px; left: 330px;"><img src="/images/txt2.png" width="327" height="26"></div>
             <!--div class="imgList item" style="width: 500px; height: 430px; top: 110px; overflow: hidden; opacity: 1; left: 220px;">
                 <div class="bx-wrapper" style="width:530px; position:relative;"><div class="bx-window" style="height:400px; width:530px; position:relative; overflow:hidden;"><ul>
                             <li style="list-style: none; position: absolute; top: 0px; left: 0px; z-index: 98; opacity: 0;"><img src="/images/pro1.png" width="500" height="430"></li>
@@ -130,7 +130,7 @@
         $obj1.css({opacity:0}).show();
         //if($.browser.msie) {correctPNG();}
         TweenMax.fromTo($obj1, 1, {css:{opacity:0,left:0}},{css:{opacity:1,left:330}});
-        $obj2.css({opacity:0}).delay(300).show(function(){TweenMax.fromTo($obj2, 1, {css:{opacity:0,left:330,top:90}},{css:{opacity:1,left:330,top:60}});});
+        $obj2.css({opacity:0}).delay(300).show(function(){TweenMax.fromTo($obj2, 1, {css:{opacity:0,left:330,top:90}},{css:{opacity:1,left:330,top:90}});});
 
         $obj3.css({opacity:0}).delay(500).show(function(){TweenMax.fromTo($obj3, 1, {css:{opacity:0,left:0,top:110}},{css:{opacity:1,left:220,top:110},onComplete:function(){
             var Slider=$obj3.find("ul").bxSlider({infiniteLoop: true,auto:true,pager:false,controls:false,mode:'fade',speed:1000,pause:5000});

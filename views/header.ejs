@@ -104,7 +104,7 @@
             position: absolute;
             z-index: 2000;
             top: 10px;
-            right: 95px;">
+            right: 90px;">
         <form action="#" name="search">
             <table border="0" align="center" cellpadding="0" cellspacing="0" class="tab_search">
                 <tr>
@@ -124,16 +124,22 @@
         position: absolute;
         z-index: 1000;
         top: 10px;
-        right: 8px;">
-        <select>
-            <% if(selected === '0'){%>
-            <option value="0" selected="selected" >简体中文</option>
-            <option value="1">English</option>
-            <%}else{%>
+        right: 18px;">
+        <% if(selected === '0'){%>
+        <a href="/switch_lang?lang=1"><span>English</span></a>
+        <%}else{%>
+        <a href="/switch_lang?lang=0"><span>简体中文</span></a>
+        <%}%>
+        <!--select>
+
+
+            <option value="1" selected="selected" >English</option>
             <option value="0">简体中文</option>
-            <option value="1"  selected="selected">English</option>
-            <%}%>
-        </select>
+
+            <option value="1">English</option>
+            <option value="0"  selected="selected">简体中文</option>
+
+        </select-->
     </div>
 
     <div class="nav_bg">

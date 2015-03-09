@@ -7,9 +7,12 @@ var dbService = require("../db"),
     async = require('async');
 
 var index = function(req,res){
-    var kind = req.body['language'];
+    /*var kind = req.body['language'];
     req.session.lang = kind;
-    res.send('success');
+    res.send('success');*/
+    var kind = req.query.lang;//category id
+    req.session.lang = kind;
+    res.redirect("/");
 };
 
 exports.index= index;

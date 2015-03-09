@@ -24,7 +24,7 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingM
 #topLink a{font-size:12px;color:#999;}
 #topLink a:hover{font-size:12px;color:#fff;}
 
-#copyright{position:absolute; right:50px; bottom:5px; z-index:888; width:400px; height:39px;}
+#copyright{position:absolute; right:50px; bottom:0px; z-index:888; width:400px; height:39px;}
 #footerbg{position:absolute; left:0px; bottom:0px; z-index:777; background:url(../images/footer.jpg); height:39px;}
 
 #sub_nav{height:339px; width:100%;background:url(../images/sub_menu_bg.png) repeat-x; display:none; margin-top:-1px; position:relative;}
