@@ -11,6 +11,11 @@ var index = function(req,res){
     if(id === undefined || id === null){
         id = 0;
     }
+
+    if (!req.session.lang) {
+        req.session.lang = '0';
+    }
+
     //productName
     var productName = '';
     var caption = '';//tab title

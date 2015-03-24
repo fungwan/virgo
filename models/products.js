@@ -6,6 +6,10 @@ var dbService = require("../db"),
 
 var index = function(req,res){
     //get init data(products info)
+    if (!req.session.lang) {
+        req.session.lang = '0';
+    }
+
     var product = {};
     var productInfo = [];
     var caption = '';
